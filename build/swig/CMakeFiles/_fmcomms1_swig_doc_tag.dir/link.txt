@@ -1,0 +1,1 @@
+/usr/bin/c++   -O3 -DNDEBUG   CMakeFiles/_fmcomms1_swig_doc_tag.dir/_fmcomms1_swig_doc_tag.cpp.o  -o _fmcomms1_swig_doc_tag -rdynamic 

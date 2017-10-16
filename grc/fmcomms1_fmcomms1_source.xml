@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<block>
+  <name>FMCOMMS1</name>
+  <key>fmcomms1_fmcomms1_source</key>
+  <category>FMCOMMS1</category>
+  <import>import fmcomms1</import>
+  <make>fmcomms1.fmcomms1_source($uri, $frequency, $samplerate, $bandwidth, $device, $device_phy, $channels, $buffer_size, $decimation - 1)</make>
+   <!-- Make one 'param' node for every Parameter you want settable from the GUI.
+       Sub-nodes:
+       * name
+       * key (makes the value accessible as $keyname, e.g. in the make node)
+       * type -->
+  <param>
+    <name>IIO context URI</name>
+    <key>uri</key>
+    <value>local:</value>
+    <type>string</type>
+  </param>
+
+  <param>
+    <name>LO Frequency</name>
+    <key>frequency</key>
+    <value>2400000000</value>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>Sample rate</name>
+    <key>samplerate</key>
+    <value>2084000</value>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>RF bandwidth</name>
+    <key>bandwidth</key>
+    <value>20000000</value>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>Device Name/ID</name>
+    <key>device</key>
+    <type>string</type>
+  </param>
+
+  <param>
+    <name>PHY Device Name/ID</name>
+    <key>device_phy</key>
+    <type>string</type>
+  </param>
+
+  <param>
+    <name>Channels</name>
+    <key>channels</key>
+    <value>[]</value>
+    <type>raw</type>
+  </param>
+
+  <param>
+    <name>Buffer size</name>
+    <key>buffer_size</key>
+    <value>0x8000</value>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>Decimation</name>
+    <key>decimation</key>
+    <value>1</value>
+    <type>int</type>
+  </param>
+
+  <!-- Refuse empty strings -->
+  <check>$device</check>
+  <check>$device_phy</check>
+  
+  <!-- Avoid divisions by zero -->
+  <check>$decimation > 0</check>
+  
+  <!-- At least one channel -->
+  <check>len($channels) &gt; 0</check>
+
+  <!-- Make one 'sink' node per input. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+  <source>
+    <name>out</name>
+    <type>short</type>
+    <nports>len($channels)</nports>
+  </source>
+</block>
