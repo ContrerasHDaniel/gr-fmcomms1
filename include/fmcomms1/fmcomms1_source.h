@@ -56,8 +56,8 @@ namespace gr {
       static sptr make(const std::string &uri, unsigned long frequency, 
           unsigned long samplerate, unsigned long bandwidth, 
           const std::string &device, 
+          const std::string &device_phy,
           const std::vector<std::string> &channels, 
-          const std::string &device_phy, 
           unsigned int buffer_size = DEFAULT_BUFFER_SIZE, 
           unsigned int decimation = 0);
 
@@ -65,8 +65,8 @@ namespace gr {
           unsigned long frequency, unsigned long samplerate, 
           unsigned long bandwidth, 
           const std::string &device, 
+          const std::string &device_phy,
           const std::vector<std::string> &channels, 
-          const std::string &device_phy, 
           unsigned int buffer_size = DEFAULT_BUFFER_SIZE, 
           unsigned int decimation = 0);
 

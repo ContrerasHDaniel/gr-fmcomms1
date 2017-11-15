@@ -37,8 +37,8 @@ namespace gr {
     fmcomms1_source::make(const std::string &uri, unsigned long frequency, 
               unsigned long samplerate, unsigned long bandwidth, 
               const std::string &device, 
+              const std::string &device_phy,
               const std::vector<std::string> &channels, 
-              const std::string &device_phy, 
               unsigned int buffer_size, unsigned int decimation)
     {
       return gnuradio::get_initial_sptr
@@ -53,8 +53,8 @@ namespace gr {
               unsigned long frequency, unsigned long samplerate,
               unsigned long bandwidth,
               const std::string &device,
-              const std::vector<std::string> &channels,
               const std::string &device_phy,
+              const std::vector<std::string> &channels,
               unsigned int buffer_size, unsigned int decimation)
     {
       return gnuradio::get_initial_sptr
