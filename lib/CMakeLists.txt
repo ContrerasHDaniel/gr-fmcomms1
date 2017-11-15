@@ -24,10 +24,9 @@ include(GrPlatform) #define LIB_SUFFIX
 
 include_directories(${Boost_INCLUDE_DIR} ${fmcomms1_include_dirs})
 link_directories(${Boost_LIBRARY_DIRS})
-
 list(APPEND fmcomms1_sources
     fmcomms1_source_impl.cc
-)
+    )
 
 set(fmcomms1_sources "${fmcomms1_sources}" PARENT_SCOPE)
 if(NOT fmcomms1_sources)

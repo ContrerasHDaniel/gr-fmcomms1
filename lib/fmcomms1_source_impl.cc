@@ -36,31 +36,25 @@ namespace gr {
     fmcomms1_source::sptr
     fmcomms1_source::make(const std::string &uri, unsigned long frequency, 
               unsigned long samplerate, unsigned long bandwidth, 
-              const std::string &device, 
-              const std::string &device_phy,
               const std::vector<std::string> &channels, 
               unsigned int buffer_size, unsigned int decimation)
     {
       return gnuradio::get_initial_sptr
         (new fmcomms1_source_impl(fmcomms1_source_impl::get_context(uri), true,
                   frequency, samplerate, bandwidth, 
-                  device, device_phy, channels, 
-                  buffer_size, decimation));
+                  channels, buffer_size, decimation));
     }
 
     fmcomms1_source::sptr
     fmcomms1_source::make_from(struct iio_context *ctx,
               unsigned long frequency, unsigned long samplerate,
               unsigned long bandwidth,
-              const std::string &device,
-              const std::string &device_phy,
               const std::vector<std::string> &channels,
               unsigned int buffer_size, unsigned int decimation)
     {
       return gnuradio::get_initial_sptr
         (new fmcomms1_source_impl(ctx, false, frequency, samplerate,
-                  bandwidth,
-                  device, device_phy, channels,
+                  bandwidth, channels,
                   buffer_size, decimation));
     }
 
@@ -190,9 +184,7 @@ namespace gr {
     fmcomms1_source_impl::fmcomms1_source_impl(struct iio_context *ctx, 
               bool destroy_ctx, 
               unsigned long frequency, unsigned long samplerate, 
-              unsigned long bandwidth, 
-              const std::string &device, 
-              const std::string &device_phy,
+              unsigned long bandwidth,
               const std::vector<std::string> &channels,
               unsigned int buffer_size, unsigned int decimation)
       : gr::sync_block("fmcomms1_source",
@@ -208,8 +200,8 @@ namespace gr {
       if(!ctx)
         throw std::runtime_error("Unable to create context.");
 
-      dev = iio_context_find_device(ctx, device.c_str());
-      phy = iio_context_find_device(ctx, device_phy.c_str());
+      dev = iio_context_find_device(ctx, "adf4351-rx-lpc");
+      phy = iio_context_find_device(ctx, "cf-ad9643-core-lpc");
       vga = iio_context_find_device(ctx, "ad8366-lpc");
 
       if(!dev || !phy || !vga)

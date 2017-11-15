@@ -4,7 +4,7 @@
   <key>fmcomms1_fmcomms1_source</key>
   <category>FMCOMMS1</category>
   <import>import fmcomms1</import>
-  <make>fmcomms1.fmcomms1_source($uri, $frequency, $samplerate, $bandwidth, $device, $device_phy, $channels, $buffer_size, $decimation - 1)</make>
+  <make>fmcomms1.fmcomms1_source($uri, $frequency, $samplerate, $bandwidth, $channels, $buffer_size, $decimation - 1)</make>
    <!-- Make one 'param' node for every Parameter you want settable from the GUI.
        Sub-nodes:
        * name
@@ -39,18 +39,6 @@
   </param>
 
   <param>
-    <name>Device Name/ID</name>
-    <key>device</key>
-    <type>string</type>
-  </param>
-
-  <param>
-    <name>PHY Device Name/ID</name>
-    <key>device_phy</key>
-    <type>string</type>
-  </param>
-
-  <param>
     <name>Channels</name>
     <key>channels</key>
     <value>[]</value>
@@ -70,10 +58,6 @@
     <value>1</value>
     <type>int</type>
   </param>
-
-  <!-- Refuse empty strings -->
-  <check>$device</check>
-  <check>$device_phy</check>
   
   <!-- Avoid divisions by zero -->
   <check>$decimation > 0</check>

@@ -16,7 +16,7 @@
 # along with GNU Radio; see the file COPYING.  If not, write to
 # the Free Software Foundation, Inc., 51 Franklin Street,
 # Boston, MA 02110-1301, USA.
-
 install(FILES
-    fmcomms1_fmcomms1_source.xml DESTINATION share/gnuradio/grc/blocks
+    fmcomms1_fmcomms1_source.xml
+    DESTINATION share/gnuradio/grc/blocks
 )

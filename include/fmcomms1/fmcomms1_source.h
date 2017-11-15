@@ -55,17 +55,13 @@ namespace gr {
        */
       static sptr make(const std::string &uri, unsigned long frequency, 
           unsigned long samplerate, unsigned long bandwidth, 
-          const std::string &device, 
-          const std::string &device_phy,
           const std::vector<std::string> &channels, 
           unsigned int buffer_size = DEFAULT_BUFFER_SIZE, 
           unsigned int decimation = 0);
 
       static sptr make_from(struct iio_context *ctx, 
           unsigned long frequency, unsigned long samplerate, 
-          unsigned long bandwidth, 
-          const std::string &device, 
-          const std::string &device_phy,
+          unsigned long bandwidth,
           const std::vector<std::string> &channels, 
           unsigned int buffer_size = DEFAULT_BUFFER_SIZE, 
           unsigned int decimation = 0);
