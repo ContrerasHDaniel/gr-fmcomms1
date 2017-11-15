@@ -9,8 +9,11 @@
 
 %{
 #include "fmcomms1/fmcomms1_source.h"
+#include "fmcomms1/fmcomms1_sink.h"
 %}
 
 
 %include "fmcomms1/fmcomms1_source.h"
 GR_SWIG_BLOCK_MAGIC2(fmcomms1, fmcomms1_source);
+%include "fmcomms1/fmcomms1_sink.h"
+GR_SWIG_BLOCK_MAGIC2(fmcomms1, fmcomms1_sink);

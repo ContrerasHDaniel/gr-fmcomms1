@@ -23,5 +23,5 @@
 install(FILES
     api.h
     fmcomms1_source.h
-    DESTINATION include/fmcomms1
+    fmcomms1_sink.h DESTINATION include/fmcomms1
 )

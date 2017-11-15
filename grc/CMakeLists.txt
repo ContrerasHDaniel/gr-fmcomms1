@@ -18,5 +18,5 @@
 # Boston, MA 02110-1301, USA.
 install(FILES
     fmcomms1_fmcomms1_source.xml
-    DESTINATION share/gnuradio/grc/blocks
+    fmcomms1_fmcomms1_sink.xml DESTINATION share/gnuradio/grc/blocks
 )

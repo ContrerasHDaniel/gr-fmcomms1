@@ -118,14 +118,14 @@ namespace gr {
               boost::to_string(bandwidth));
       
       // Parámetros del dispositivo phy
-      params_dev.push_back("out_altvoltage0_frequency="+
+      params_phy.push_back("out_altvoltage0_frequency="+
               boost::to_string(frequency));
 
 
       // Parámetros del dispositivo vga
-      params_dev.push_back("out_voltage0_hardwaregain="+
+      params_vga.push_back("out_voltage0_hardwaregain="+
         boost::to_string(20.0));
-      params_dev.push_back("out_voltage1_hardwaregain="+
+      params_vga.push_back("out_voltage1_hardwaregain="+
         boost::to_string(20.0));
 
       set_parameters(this->vga, params_vga);
