@@ -144,14 +144,16 @@ lib/test-fmcomms1: lib/CMakeFiles/test-fmcomms1.dir/qa_fmcomms1_source.cc.o
 lib/test-fmcomms1: lib/CMakeFiles/test-fmcomms1.dir/build.make
 lib/test-fmcomms1: /usr/local/lib/libgnuradio-runtime.so
 lib/test-fmcomms1: /usr/local/lib/libgnuradio-pmt.so
+lib/test-fmcomms1: /usr/lib/liblog4cpp.so
 lib/test-fmcomms1: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
 lib/test-fmcomms1: /usr/lib/x86_64-linux-gnu/libboost_system.so
 lib/test-fmcomms1: /usr/lib/x86_64-linux-gnu/libcppunit.so
-lib/test-fmcomms1: lib/libgnuradio-fmcomms1-1.0.0git.so.0.0.0
 lib/test-fmcomms1: /usr/local/lib/libgnuradio-runtime.so
 lib/test-fmcomms1: /usr/local/lib/libgnuradio-pmt.so
+lib/test-fmcomms1: /usr/lib/liblog4cpp.so
 lib/test-fmcomms1: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
 lib/test-fmcomms1: /usr/lib/x86_64-linux-gnu/libboost_system.so
+lib/test-fmcomms1: /usr/lib/x86_64-linux-gnu/libcppunit.so
 lib/test-fmcomms1: lib/CMakeFiles/test-fmcomms1.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/daniel/gr-fmcomms1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable test-fmcomms1"
 	cd /home/daniel/gr-fmcomms1/build/lib && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test-fmcomms1.dir/link.txt --verbose=$(VERBOSE)

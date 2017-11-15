@@ -94,6 +94,7 @@ lib/libgnuradio-fmcomms1-1.0.0git.so.0.0.0: /usr/lib/x86_64-linux-gnu/libboost_f
 lib/libgnuradio-fmcomms1-1.0.0git.so.0.0.0: /usr/lib/x86_64-linux-gnu/libboost_system.so
 lib/libgnuradio-fmcomms1-1.0.0git.so.0.0.0: /usr/local/lib/libgnuradio-runtime.so
 lib/libgnuradio-fmcomms1-1.0.0git.so.0.0.0: /usr/local/lib/libgnuradio-pmt.so
+lib/libgnuradio-fmcomms1-1.0.0git.so.0.0.0: /usr/lib/liblog4cpp.so
 lib/libgnuradio-fmcomms1-1.0.0git.so.0.0.0: lib/CMakeFiles/gnuradio-fmcomms1.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/daniel/gr-fmcomms1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library libgnuradio-fmcomms1-1.0.0git.so"
 	cd /home/daniel/gr-fmcomms1/build/lib && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gnuradio-fmcomms1.dir/link.txt --verbose=$(VERBOSE)

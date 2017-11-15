@@ -300,6 +300,20 @@ gnuradio/gr_complex.h
 stdint.h
 -
 
+/usr/local/include/iio.h
+limits.h
+-
+stdint.h
+-
+stdlib.h
+-
+stddef.h
+-
+sys/types.h
+-
+stdbool.h
+-
+
 /usr/local/include/pmt/api.h
 gnuradio/attributes.h
 -

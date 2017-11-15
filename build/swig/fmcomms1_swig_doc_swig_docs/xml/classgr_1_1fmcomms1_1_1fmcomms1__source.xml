@@ -141,27 +141,6 @@
         </inbodydescription>
         <location file="/home/daniel/gr-fmcomms1/include/fmcomms1/fmcomms1_source.h" line="73" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="classgr_1_1fmcomms1_1_1fmcomms1__source_1a8034e1e8419ebf730cbd5d408c55d123" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
-        <definition>virtual void gr::fmcomms1::fmcomms1_source::set_parameters</definition>
-        <argsstring>(struct iio_device *phy, const std::vector&lt; std::string &gt; &amp;params)=0</argsstring>
-        <name>set_parameters</name>
-        <param>
-          <type>struct iio_device *</type>
-          <declname>phy</declname>
-        </param>
-        <param>
-          <type>const std::vector&lt; std::string &gt; &amp;</type>
-          <declname>params</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/daniel/gr-fmcomms1/include/fmcomms1/fmcomms1_source.h" line="74" column="1"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>&lt;+description of block+&gt; </para>    </briefdescription>
@@ -189,12 +168,11 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/daniel/gr-fmcomms1/include/fmcomms1/fmcomms1_source.h" line="44" column="1" bodyfile="/home/daniel/gr-fmcomms1/include/fmcomms1/fmcomms1_source.h" bodystart="43" bodyend="75"/>
+    <location file="/home/daniel/gr-fmcomms1/include/fmcomms1/fmcomms1_source.h" line="44" column="1" bodyfile="/home/daniel/gr-fmcomms1/include/fmcomms1/fmcomms1_source.h" bodystart="43" bodyend="74"/>
     <listofallmembers>
       <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source_1a2a701ee9641713a9735f2f9c38783928" prot="public" virt="non-virtual"><scope>gr::fmcomms1::fmcomms1_source</scope><name>make</name></member>
       <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source_1aa7ce638682788866fc53413a21eb54bd" prot="public" virt="non-virtual"><scope>gr::fmcomms1::fmcomms1_source</scope><name>make_from</name></member>
       <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source_1a5fa60daba75ebe55851c75841dcb0330" prot="public" virt="pure-virtual"><scope>gr::fmcomms1::fmcomms1_source</scope><name>set_buffer_size</name></member>
-      <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source_1a8034e1e8419ebf730cbd5d408c55d123" prot="public" virt="pure-virtual"><scope>gr::fmcomms1::fmcomms1_source</scope><name>set_parameters</name></member>
       <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source_1a6ecd7f25afba740aba3356a8349ca0a5" prot="public" virt="non-virtual"><scope>gr::fmcomms1::fmcomms1_source</scope><name>sptr</name></member>
     </listofallmembers>
   </compounddef>

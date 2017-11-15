@@ -31,8 +31,6 @@ Args:
 
 
 
-
-
 %feature("docstring") gr::fmcomms1::fmcomms1_source::make "<+description of block+>
 
 Constructor Specific Documentation:

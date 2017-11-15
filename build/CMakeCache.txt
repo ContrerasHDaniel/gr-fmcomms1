@@ -216,14 +216,17 @@ GNURADIO_RUNTIME_LIBRARIES_gnuradio-pmt:FILEPATH=/usr/local/lib/libgnuradio-pmt.
 //Path to a library.
 GNURADIO_RUNTIME_LIBRARIES_gnuradio-runtime:FILEPATH=/usr/local/lib/libgnuradio-runtime.so
 
+//Path to a library.
+GNURADIO_RUNTIME_LIBRARIES_log4cpp:FILEPATH=/usr/lib/liblog4cpp.so
+
 //The directory containing a CMake configuration file for Gnuradio.
 Gnuradio_DIR:PATH=/usr/local/lib/cmake/gnuradio
 
 //Path to a file.
-IIO_INCLUDE_DIR:PATH=/usr/local/src/libiio
+IIO_INCLUDE_DIR:PATH=/usr/local/include
 
 //Path to a library.
-IIO_LIBRARIES:FILEPATH=/usr/lib/x86_64-linux-gnu/libiio.so.0.10
+IIO_LIBRARIES:FILEPATH=/usr/local/lib/libiio.so.0.11
 
 //lib directory suffix
 LIB_SUFFIX:STRING=
@@ -250,19 +253,19 @@ QA_PYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2
 SHELL:FILEPATH=/bin/sh
 
 //Path to a file.
-SWIG_DIR:PATH=/usr/share/swig3.0
+SWIG_DIR:PATH=/usr/share/swig2.0
 
 //Path to a program.
-SWIG_EXECUTABLE:FILEPATH=/usr/bin/swig3.0
+SWIG_EXECUTABLE:FILEPATH=/usr/bin/swig2.0
 
 //Swig version
-SWIG_VERSION:STRING=3.0.8
+SWIG_VERSION:STRING=2.0.12
 
 //Dependencies for the target
 _fmcomms1_swig_LIB_DEPENDS:STATIC=general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;gnuradio-fmcomms1;
 
 //Dependencies for the target
-gnuradio-fmcomms1_LIB_DEPENDS:STATIC=general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/local/lib/libgnuradio-runtime.so;general;/usr/local/lib/libgnuradio-pmt.so;
+gnuradio-fmcomms1_LIB_DEPENDS:STATIC=general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/local/lib/libgnuradio-runtime.so;general;/usr/local/lib/libgnuradio-pmt.so;general;/usr/lib/liblog4cpp.so;general;iio;
 
 //Value Computed by CMake
 gr-fmcomms1_BINARY_DIR:STATIC=/home/daniel/gr-fmcomms1/build
@@ -429,7 +432,7 @@ FIND_PACKAGE_MESSAGE_DETAILS_CPPUNIT:INTERNAL=[/usr/lib/x86_64-linux-gnu/libcppu
 //Details about finding Doxygen
 FIND_PACKAGE_MESSAGE_DETAILS_Doxygen:INTERNAL=[/usr/bin/doxygen][v1.8.11()]
 //Details about finding GNURADIO_RUNTIME
-FIND_PACKAGE_MESSAGE_DETAILS_GNURADIO_RUNTIME:INTERNAL=[/usr/local/lib/libgnuradio-runtime.so;/usr/local/lib/libgnuradio-pmt.so][/usr/local/include][v()]
+FIND_PACKAGE_MESSAGE_DETAILS_GNURADIO_RUNTIME:INTERNAL=[/usr/local/lib/libgnuradio-runtime.so;/usr/local/lib/libgnuradio-pmt.so;/usr/lib/liblog4cpp.so][/usr/local/include][v()]
 //Details about finding Git
 FIND_PACKAGE_MESSAGE_DETAILS_Git:INTERNAL=[/usr/bin/git][v()]
 //Details about finding PkgConfig
@@ -439,7 +442,7 @@ FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python2][v2.7.12(2)
 //Details about finding PythonLibs
 FIND_PACKAGE_MESSAGE_DETAILS_PythonLibs:INTERNAL=[/usr/lib/x86_64-linux-gnu/libpython2.7.so][/usr/include/python2.7][v2.7.12(2)]
 //Details about finding SWIG
-FIND_PACKAGE_MESSAGE_DETAILS_SWIG:INTERNAL=[/usr/bin/swig3.0][/usr/share/swig3.0][v()]
+FIND_PACKAGE_MESSAGE_DETAILS_SWIG:INTERNAL=[/usr/bin/swig2.0][/usr/share/swig2.0][v()]
 //ADVANCED property for variable: GIT_EXECUTABLE
 GIT_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GNURADIO_RUNTIME_INCLUDE_DIRS
@@ -502,10 +505,10 @@ PC_GNURADIO_RUNTIME_CFLAGS_OTHER:INTERNAL=
 PC_GNURADIO_RUNTIME_FOUND:INTERNAL=1
 PC_GNURADIO_RUNTIME_INCLUDEDIR:INTERNAL=/usr/local/include
 PC_GNURADIO_RUNTIME_INCLUDE_DIRS:INTERNAL=/usr/local/include
-PC_GNURADIO_RUNTIME_LDFLAGS:INTERNAL=-L/usr/local/lib;-lgnuradio-runtime;-lgnuradio-pmt
+PC_GNURADIO_RUNTIME_LDFLAGS:INTERNAL=-L/usr/local/lib;-lgnuradio-runtime;-lgnuradio-pmt;-llog4cpp
 PC_GNURADIO_RUNTIME_LDFLAGS_OTHER:INTERNAL=
 PC_GNURADIO_RUNTIME_LIBDIR:INTERNAL=/usr/local/lib
-PC_GNURADIO_RUNTIME_LIBRARIES:INTERNAL=gnuradio-runtime;gnuradio-pmt
+PC_GNURADIO_RUNTIME_LIBRARIES:INTERNAL=gnuradio-runtime;gnuradio-pmt;log4cpp
 PC_GNURADIO_RUNTIME_LIBRARY_DIRS:INTERNAL=/usr/local/lib
 PC_GNURADIO_RUNTIME_LIBS:INTERNAL=
 PC_GNURADIO_RUNTIME_LIBS_L:INTERNAL=
@@ -516,50 +519,50 @@ PC_GNURADIO_RUNTIME_STATIC_CFLAGS:INTERNAL=-I/usr/local/include
 PC_GNURADIO_RUNTIME_STATIC_CFLAGS_I:INTERNAL=
 PC_GNURADIO_RUNTIME_STATIC_CFLAGS_OTHER:INTERNAL=
 PC_GNURADIO_RUNTIME_STATIC_INCLUDE_DIRS:INTERNAL=/usr/local/include
-PC_GNURADIO_RUNTIME_STATIC_LDFLAGS:INTERNAL=-L/usr/local/lib;-lgnuradio-runtime;-lgnuradio-pmt
+PC_GNURADIO_RUNTIME_STATIC_LDFLAGS:INTERNAL=-L/usr/local/lib;-lgnuradio-runtime;-lgnuradio-pmt;-llog4cpp
 PC_GNURADIO_RUNTIME_STATIC_LDFLAGS_OTHER:INTERNAL=
 PC_GNURADIO_RUNTIME_STATIC_LIBDIR:INTERNAL=
-PC_GNURADIO_RUNTIME_STATIC_LIBRARIES:INTERNAL=gnuradio-runtime;gnuradio-pmt
+PC_GNURADIO_RUNTIME_STATIC_LIBRARIES:INTERNAL=gnuradio-runtime;gnuradio-pmt;log4cpp
 PC_GNURADIO_RUNTIME_STATIC_LIBRARY_DIRS:INTERNAL=/usr/local/lib
 PC_GNURADIO_RUNTIME_STATIC_LIBS:INTERNAL=
 PC_GNURADIO_RUNTIME_STATIC_LIBS_L:INTERNAL=
 PC_GNURADIO_RUNTIME_STATIC_LIBS_OTHER:INTERNAL=
 PC_GNURADIO_RUNTIME_STATIC_LIBS_PATHS:INTERNAL=
-PC_GNURADIO_RUNTIME_VERSION:INTERNAL=3.7.11.1
+PC_GNURADIO_RUNTIME_VERSION:INTERNAL=3.7.12git
 PC_GNURADIO_RUNTIME_gnuradio-runtime_INCLUDEDIR:INTERNAL=
 PC_GNURADIO_RUNTIME_gnuradio-runtime_LIBDIR:INTERNAL=
 PC_GNURADIO_RUNTIME_gnuradio-runtime_PREFIX:INTERNAL=
 PC_GNURADIO_RUNTIME_gnuradio-runtime_VERSION:INTERNAL=
-PC_IIO_CFLAGS:INTERNAL=
+PC_IIO_CFLAGS:INTERNAL=-I/usr/local/include
 PC_IIO_CFLAGS_I:INTERNAL=
 PC_IIO_CFLAGS_OTHER:INTERNAL=
 PC_IIO_FOUND:INTERNAL=1
-PC_IIO_INCLUDEDIR:INTERNAL=/usr/include
-PC_IIO_INCLUDE_DIRS:INTERNAL=
-PC_IIO_LDFLAGS:INTERNAL=-liio
+PC_IIO_INCLUDEDIR:INTERNAL=/usr/local/include
+PC_IIO_INCLUDE_DIRS:INTERNAL=/usr/local/include
+PC_IIO_LDFLAGS:INTERNAL=-L/usr/local/lib;-liio
 PC_IIO_LDFLAGS_OTHER:INTERNAL=
-PC_IIO_LIBDIR:INTERNAL=/usr/lib/x86_64-linux-gnu
+PC_IIO_LIBDIR:INTERNAL=/usr/local/lib
 PC_IIO_LIBRARIES:INTERNAL=iio
-PC_IIO_LIBRARY_DIRS:INTERNAL=
+PC_IIO_LIBRARY_DIRS:INTERNAL=/usr/local/lib
 PC_IIO_LIBS:INTERNAL=
 PC_IIO_LIBS_L:INTERNAL=
 PC_IIO_LIBS_OTHER:INTERNAL=
 PC_IIO_LIBS_PATHS:INTERNAL=
-PC_IIO_PREFIX:INTERNAL=/usr
-PC_IIO_STATIC_CFLAGS:INTERNAL=
+PC_IIO_PREFIX:INTERNAL=/usr/local
+PC_IIO_STATIC_CFLAGS:INTERNAL=-I/usr/local/include
 PC_IIO_STATIC_CFLAGS_I:INTERNAL=
 PC_IIO_STATIC_CFLAGS_OTHER:INTERNAL=
-PC_IIO_STATIC_INCLUDE_DIRS:INTERNAL=
-PC_IIO_STATIC_LDFLAGS:INTERNAL=-liio
+PC_IIO_STATIC_INCLUDE_DIRS:INTERNAL=/usr/local/include
+PC_IIO_STATIC_LDFLAGS:INTERNAL=-L/usr/local/lib;-liio
 PC_IIO_STATIC_LDFLAGS_OTHER:INTERNAL=
 PC_IIO_STATIC_LIBDIR:INTERNAL=
 PC_IIO_STATIC_LIBRARIES:INTERNAL=iio
-PC_IIO_STATIC_LIBRARY_DIRS:INTERNAL=
+PC_IIO_STATIC_LIBRARY_DIRS:INTERNAL=/usr/local/lib
 PC_IIO_STATIC_LIBS:INTERNAL=
 PC_IIO_STATIC_LIBS_L:INTERNAL=
 PC_IIO_STATIC_LIBS_OTHER:INTERNAL=
 PC_IIO_STATIC_LIBS_PATHS:INTERNAL=
-PC_IIO_VERSION:INTERNAL=0.10
+PC_IIO_VERSION:INTERNAL=0.11
 PC_IIO_libiio_INCLUDEDIR:INTERNAL=
 PC_IIO_libiio_LIBDIR:INTERNAL=
 PC_IIO_libiio_PREFIX:INTERNAL=
@@ -601,5 +604,5 @@ _Boost_USE_MULTITHREADED_LAST:INTERNAL=TRUE
 __pkg_config_checked_PC_CPPUNIT:INTERNAL=1
 __pkg_config_checked_PC_GNURADIO_RUNTIME:INTERNAL=1
 __pkg_config_checked_PC_IIO:INTERNAL=1
-prefix_result:INTERNAL=/usr/lib/x86_64-linux-gnu
+prefix_result:INTERNAL=/usr/local/lib
 

@@ -31,8 +31,9 @@ try:
 	from fmcomms1_swig import *
 except ImportError:
 	dirname, filename = os.path.split(os.path.abspath(__file__))
-    __path__.append(os.path.join(dirname, "..", "..", "swig"))
-    from fmcomms1_swig import *
+	__path__.append(os.path.join(dirname, "..", "..", "swig"))
+	
+	from fmcomms1_swig import *
 
 # import any pure python here
 #

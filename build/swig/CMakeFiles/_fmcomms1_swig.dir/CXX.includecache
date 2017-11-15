@@ -39,8 +39,6 @@ functional
 -
 iterator
 -
-algorithm
--
 gnuradio/block.h
 -
 gnuradio/sync_block.h

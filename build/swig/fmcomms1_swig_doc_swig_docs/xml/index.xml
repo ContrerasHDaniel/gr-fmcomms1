@@ -5,7 +5,6 @@
     <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source_1a2a701ee9641713a9735f2f9c38783928" kind="function"><name>make</name></member>
     <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source_1aa7ce638682788866fc53413a21eb54bd" kind="function"><name>make_from</name></member>
     <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source_1a5fa60daba75ebe55851c75841dcb0330" kind="function"><name>set_buffer_size</name></member>
-    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source_1a8034e1e8419ebf730cbd5d408c55d123" kind="function"><name>set_parameters</name></member>
   </compound>
   <compound refid="namespacegr" kind="namespace"><name>gr</name>
   </compound>

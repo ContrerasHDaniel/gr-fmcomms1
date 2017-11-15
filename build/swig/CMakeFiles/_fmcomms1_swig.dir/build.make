@@ -102,6 +102,7 @@ swig/_fmcomms1_swig.so: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
 swig/_fmcomms1_swig.so: /usr/lib/x86_64-linux-gnu/libboost_system.so
 swig/_fmcomms1_swig.so: /usr/local/lib/libgnuradio-runtime.so
 swig/_fmcomms1_swig.so: /usr/local/lib/libgnuradio-pmt.so
+swig/_fmcomms1_swig.so: /usr/lib/liblog4cpp.so
 swig/_fmcomms1_swig.so: swig/CMakeFiles/_fmcomms1_swig.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/daniel/gr-fmcomms1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared module _fmcomms1_swig.so"
 	cd /home/daniel/gr-fmcomms1/build/swig && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/_fmcomms1_swig.dir/link.txt --verbose=$(VERBOSE)

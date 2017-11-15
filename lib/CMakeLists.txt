@@ -22,7 +22,7 @@
 ########################################################################
 include(GrPlatform) #define LIB_SUFFIX
 
-include_directories(${Boost_INCLUDE_DIR})
+include_directories(${Boost_INCLUDE_DIR} ${fmcomms1_include_dirs})
 link_directories(${Boost_LIBRARY_DIRS})
 
 list(APPEND fmcomms1_sources
@@ -36,7 +36,10 @@ if(NOT fmcomms1_sources)
 endif(NOT fmcomms1_sources)
 
 add_library(gnuradio-fmcomms1 SHARED ${fmcomms1_sources})
-target_link_libraries(gnuradio-fmcomms1 ${Boost_LIBRARIES} ${GNURADIO_ALL_LIBRARIES})
+target_link_libraries(gnuradio-fmcomms1 
+			${Boost_LIBRARIES} 
+			${GNURADIO_ALL_LIBRARIES}
+			iio)
 set_target_properties(gnuradio-fmcomms1 PROPERTIES DEFINE_SYMBOL "gnuradio_fmcomms1_EXPORTS")
 
 if(APPLE)
@@ -71,7 +74,8 @@ target_link_libraries(
   ${GNURADIO_RUNTIME_LIBRARIES}
   ${Boost_LIBRARIES}
   ${CPPUNIT_LIBRARIES}
-  gnuradio-fmcomms1
+  ${GNURADIO_ALL_LIBRARIES}
+  iio
 )
 
 GR_ADD_TEST(test_fmcomms1 test-fmcomms1)
