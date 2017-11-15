@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.11">
+  <compound refid="classgr_1_1fmcomms1_1_1fmcomms1__source" kind="class"><name>gr::fmcomms1::fmcomms1_source</name>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source_1a6ecd7f25afba740aba3356a8349ca0a5" kind="typedef"><name>sptr</name></member>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source_1a223b0a85bd1b8e2710d23894d873d573" kind="function"><name>make</name></member>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source_1a4ff246434881b40bbf1af02851b76af3" kind="function"><name>make_from</name></member>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source_1a5fa60daba75ebe55851c75841dcb0330" kind="function"><name>set_buffer_size</name></member>
+  </compound>
+  <compound refid="classgr_1_1fmcomms1_1_1fmcomms1__source__impl" kind="class"><name>gr::fmcomms1::fmcomms1_source_impl</name>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source__impl_1a8b83c9b8ff1d3f21942b8f60ffc9dcdc" kind="variable"><name>iio_mutex</name></member>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source__impl_1a823960dc8ba24e49f51169a2a2deafff" kind="variable"><name>items_in_buffer</name></member>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source__impl_1a033e3901e0159894ac2aeaa0efd43d54" kind="variable"><name>byte_offset</name></member>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source__impl_1a121330935224f9e3c5870d31f8b56b0e" kind="variable"><name>sample_counter</name></member>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source__impl_1adcd332d2c8c70fd1d3688730cd2ce8a4" kind="variable"><name>ctx</name></member>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source__impl_1adf5564ce16e162166d70b1c0e0e46e6e" kind="variable"><name>dev</name></member>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source__impl_1a6af6f61f8d9165d4234d0b57f82139ad" kind="variable"><name>phy</name></member>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source__impl_1a786da6c617c36b403fe818324f4a8ec9" kind="variable"><name>vga</name></member>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source__impl_1a6c201e66438bb7d4dff8f8b20bfcc83f" kind="variable"><name>buf</name></member>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source__impl_1a0920a36a6bc40fa56749d8a9fb5d10fd" kind="variable"><name>channel_list</name></member>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source__impl_1ad0137934caa623eccb3549e00056dfae" kind="variable"><name>buffer_size</name></member>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source__impl_1a6c3791ee127826a83f54861d2be4124b" kind="variable"><name>decimation</name></member>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source__impl_1a28213329e1f300564b50948a955ea4fc" kind="variable"><name>destroy_ctx</name></member>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source__impl_1a985a4cf6dcf23ef1f3205297dd72d384" kind="function"><name>channel_read</name></member>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source__impl_1a0aee9d1b878706817f8b6344097e0b0a" kind="function"><name>fmcomms1_source_impl</name></member>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source__impl_1a803dc59b83eef78a3553e0121bbfd1f5" kind="function"><name>~fmcomms1_source_impl</name></member>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source__impl_1ac779e0faf1766866dd2e8030d301ee3b" kind="function"><name>set_params</name></member>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source__impl_1a6c33d1746cfb97bc834cc26dd067fe55" kind="function"><name>set_parameters</name></member>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source__impl_1a05f09edef606079e2594f1e0b1f76ea4" kind="function"><name>set_buffer_size</name></member>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source__impl_1a58df9e8ff3202ac0c91dc1932dbb1739" kind="function"><name>work</name></member>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source__impl_1ab0c8a6061cb832c770d936bb4b3c5b1a" kind="function"><name>start</name></member>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source__impl_1ad91f1164c8543c4945ad851c4a458944" kind="function"><name>stop</name></member>
+    <member refid="classgr_1_1fmcomms1_1_1fmcomms1__source__impl_1afa82cd25194d8a205723f466e52a3a95" kind="function"><name>get_context</name></member>
+  </compound>
+  <compound refid="namespacegr" kind="namespace"><name>gr</name>
+  </compound>
+  <compound refid="namespacegr_1_1fmcomms1" kind="namespace"><name>gr::fmcomms1</name>
+  </compound>
+  <compound refid="namespacestd" kind="namespace"><name>std</name>
+  </compound>
+  <compound refid="api_8h" kind="file"><name>api.h</name>
+    <member refid="api_8h_1a2111d34c2fef3520a4806bb70be6b783" kind="define"><name>FMCOMMS1_API</name></member>
+  </compound>
+  <compound refid="fmcomms1__source_8h" kind="file"><name>fmcomms1_source.h</name>
+    <member refid="fmcomms1__source_8h_1a6e576a3c6530636d68b7a220480bcd32" kind="define"><name>DEFAULT_BUFFER_SIZE</name></member>
+  </compound>
+  <compound refid="fmcomms1__source__impl_8h" kind="file"><name>fmcomms1_source_impl.h</name>
+  </compound>
+  <compound refid="group__defs_8dox" kind="file"><name>group_defs.dox</name>
+  </compound>
+  <compound refid="main__page_8dox" kind="file"><name>main_page.dox</name>
+  </compound>
+  <compound refid="group__block" kind="group"><name>block</name>
+  </compound>
+  <compound refid="dir_389d44e3dae15bf24ede04a005453bbb" kind="dir"><name>fmcomms1</name>
+  </compound>
+  <compound refid="dir_d44c64559bbebec7f509842c48db8b23" kind="dir"><name>include</name>
+  </compound>
+  <compound refid="dir_97aefd0d527b934f1d99a682da8fe6a9" kind="dir"><name>lib</name>
+  </compound>
+  <compound refid="indexpage" kind="page"><name>index</name>
+  </compound>
+</doxygenindex>

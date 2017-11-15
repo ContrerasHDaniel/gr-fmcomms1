@@ -44,7 +44,7 @@ namespace gr {
       return gnuradio::get_initial_sptr
         (new fmcomms1_source_impl(fmcomms1_source_impl::get_context(uri), true,
                   frequency, samplerate, bandwidth, 
-                  device, channels, device_phy, 
+                  device, device_phy, channels, 
                   buffer_size, decimation));
     }
 
@@ -60,7 +60,7 @@ namespace gr {
       return gnuradio::get_initial_sptr
         (new fmcomms1_source_impl(ctx, false, frequency, samplerate,
                   bandwidth,
-                  device, channels, device_phy,
+                  device, device_phy, channels,
                   buffer_size, decimation));
     }
 
@@ -192,8 +192,8 @@ namespace gr {
               unsigned long frequency, unsigned long samplerate, 
               unsigned long bandwidth, 
               const std::string &device, 
-              const std::vector<std::string> &channels, 
-              const std::string &device_phy, 
+              const std::string &device_phy,
+              const std::vector<std::string> &channels,
               unsigned int buffer_size, unsigned int decimation)
       : gr::sync_block("fmcomms1_source",
               gr::io_signature::make(0, 0, 0),
