@@ -23,12 +23,16 @@ This is the GNU Radio FMCOMMS1 module. Place your Python package
 description here (python/__init__.py).
 '''
 
+import os
+
 # import swig generated symbols into the fmcomms1 namespace
 try:
 	# this might fail if the module is python-only
 	from fmcomms1_swig import *
 except ImportError:
-	pass
+	dirname, filename = os.path.split(os.path.abspath(__file__))
+    __path__.append(os.path.join(dirname, "..", "..", "swig"))
+    from fmcomms1_swig import *
 
 # import any pure python here
 #
