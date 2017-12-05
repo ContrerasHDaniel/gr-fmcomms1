@@ -200,8 +200,8 @@ namespace gr {
       if(!ctx)
         throw std::runtime_error("Unable to create context.");
 
-      dev = iio_context_find_device(ctx, "adf4351-rx-lpc");
-      phy = iio_context_find_device(ctx, "cf-ad9643-core-lpc");
+      dev = iio_context_find_device(ctx, "cf-ad9643-core-lpc");
+      phy = iio_context_find_device(ctx, "adf4351-rx-lpc");
       vga = iio_context_find_device(ctx, "ad8366-lpc");
 
       if(!dev || !phy || !vga)

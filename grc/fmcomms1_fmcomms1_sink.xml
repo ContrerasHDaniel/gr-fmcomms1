@@ -4,7 +4,7 @@
   <key>fmcomms1_fmcomms1_sink</key>
   <category>FMCOMMS1</category>
   <import>import fmcomms1</import>
-  <make>fmcomms1.fmcomms1_sink($uri, $frequency, $samplerate, $bandwidth, $channels, $buffer_size, $interpolation - 1), cyclic</make>
+  <make>fmcomms1.fmcomms1_sink($uri, $frequency, $samplerate, $bandwidth, $channels, $buffer_size, $interpolation - 1, $cyclic)</make>
   <!-- Make one 'param' node for every Parameter you want settable from the GUI.
        Sub-nodes:
        * name

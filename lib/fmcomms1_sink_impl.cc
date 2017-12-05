@@ -56,7 +56,7 @@ namespace gr {
     {
       return gnuradio::get_initial_sptr
         (new fmcomms1_sink_impl(ctx, false, frequency, samplerate,
-                      bandwidth, channels, buffer_size, interpolation));
+                      bandwidth, channels, buffer_size, interpolation, cyclic));
     }
 
     /* Función para establecer los parámetros de los dispositivos de transmisión */
@@ -64,29 +64,22 @@ namespace gr {
     fmcomms1_sink_impl::set_params(unsigned long frequency,
               unsigned long samplerate, unsigned long bandwidth)
     {
-      std::vector<std::string> params_dev, params_phy, params_vga;
+      std::vector<std::string> params_dev, params_phy;
 
       // Parámetros del dispositivo de transmisión
-      params_dev.push_back("in_voltage_sampling_frequency="+
-              boost::to_string(samplerate));
-      params_dev.push_back("in_voltage0_calibbias="+
-              boost::to_string(bandwidth));
-      params_dev.push_back("in_voltage1_calibbias="+
-              boost::to_string(bandwidth));
+      params_dev.push_back("out_altvoltage_sampling_frequency="+
+              boost::to_string(frequency));
+      params_dev.push_back("out_voltage0_calibbias="+
+              boost::to_string(bandwidth/1000000));
+      params_dev.push_back("out_voltage1_calibbias="+
+              boost::to_string(bandwidth/1000000));
 
       // Parámetros del dispositivo DAC
       params_phy.push_back("out_altvoltage0_frequency="+
               boost::to_string(frequency));
 
-      // Parámetros del dispositivo vga
-      params_vga.push_back("out_voltage0_hardwaregain="+
-              boost::to_string(20.0));
-      params_vga.push_back("out_voltage1_hardwaregain="+
-              boost::to_string(20.0));
-
-      fmcomms1_source_impl::set_parameters(this->vga, params_vga);
-      fmcomms1_source_impl::set_parameters(this->phy, params_phy);
       fmcomms1_source_impl::set_parameters(this->dev, params_dev);
+      fmcomms1_source_impl::set_parameters(this->phy, params_phy);
 
     }
 
@@ -115,11 +108,10 @@ namespace gr {
       if (!ctx)
         throw std::runtime_error("Unable to create context");
 
-      dev = iio_context_find_device(ctx, "adf4351-rx-lpc");
-      phy = iio_context_find_device(ctx, "cf-ad9643-core-lpc");
-      vga = iio_context_find_device(ctx, "ad8366-lpc");
+      dev = iio_context_find_device(ctx, "cf-ad9122-core-lpc");
+      phy = iio_context_find_device(ctx, "adf4351-tx-lpc");
 
-      if(!dev || !phy || !vga)
+      if(!dev || !phy)
       {
         if (destroy_ctx)
           iio_context_destroy(ctx);
@@ -132,54 +124,55 @@ namespace gr {
       // Canal del dispositivo phy de la tarjeta-
       struct iio_channel *chn0 = iio_device_find_channel(phy, "altvoltage0", true);
 
-      // Canal 0 del vga
-      struct iio_channel *chn1 = iio_device_find_channel(vga, "voltage0", true);
 
       // Canal 1 del vga
-      struct iio_channel *chn2 = iio_device_find_channel(vga, "voltage1", true);
+      //struct iio_channel *chn2 = iio_device_find_channel(vga, "voltage1", true);
+
+      struct iio_channel *chn1 = iio_device_find_channel(dev, "voltage0", true);
+      struct iio_channel *chn2 = iio_device_find_channel(dev, "voltage1", true);
 
       //Activación de los canales
       iio_channel_enable(chn0);
-      iio_channel_enable(chn1);
-      iio_channel_enable(chn2);
 
-      //** Activación de los canales del dispositivo de recepción **//
+      //** Activación de los canales del dispositivo de transmisión **//
       // Primero se desactivan todos, si están activados
       nb_channels = iio_device_get_channels_count(dev);
       for (i = 0; i < nb_channels; i++)
         iio_channel_disable(iio_device_get_channel(dev, i));
 
-      if (channels.empty())
-      {
-        for (i = 0; i < nb_channels; i++)
-        {
-          struct iio_channel *chn = iio_device_get_channel(dev, i);
+      if (channels.empty()) {
+        for (i = 0; i < nb_channels; i++) {
+          struct iio_channel *chn =
+            iio_device_get_channel(dev, i);
 
           iio_channel_enable(chn);
           channel_list.push_back(chn);
         }
       } else {
         for (std::vector<std::string>::const_iterator it =
-             channels.begin(); it != channels.end(); ++it)
-        {
-          struct iio_channel *chn = 
-              iio_device_find_channel(dev, it->c_str(), false);
-
-          if (!chn)
-          {
+            channels.begin();
+            it != channels.end(); ++it) {
+          struct iio_channel *chn =
+            iio_device_find_channel(dev,
+                it->c_str(), true);
+          if (!chn) {
             if (destroy_ctx)
               iio_context_destroy(ctx);
-
-            throw std::runtime_error("Channel not found");
+            throw std::runtime_error(
+                "Channel not found");
           }
 
           iio_channel_enable(chn);
+          if (!iio_channel_is_enabled(chn))
+            throw std::runtime_error(
+                "Channel not enabled");
           channel_list.push_back(chn);
         }
       }
 
+
       set_params(frequency, samplerate, bandwidth);
-      
+
       buf = iio_device_create_buffer(dev, buffer_size, cyclic);
 
       if(!buf)
@@ -207,11 +200,10 @@ namespace gr {
       ptrdiff_t buf_step = iio_buffer_step(buf) * (interpolation + 1);
 
       for (dst_ptr = (uintptr_t) iio_buffer_first(buf, chn);
-            dst_ptr < buf_end && src_ptr + length <= end;
-            dst_ptr += buf_step, src_ptr += length)
-
-        iio_channel_convert_inverse(chn,
-          (void *) dst_ptr, (const void *) src_ptr);
+          dst_ptr < buf_end && src_ptr + length <= end;
+          dst_ptr += buf_step, src_ptr += length)
+            iio_channel_convert_inverse(chn,
+            (void *) dst_ptr, (const void *) src_ptr);
 
     }
 
@@ -222,22 +214,18 @@ namespace gr {
     {
       int ret;
 
-      if (interpolation >= 1)
-      {
-        ptrdiff_t len = (intptr_t) iio_buffer_end(buf) - 
-                          (intptr_t) iio_buffer_start(buf);
-
+      if (interpolation >= 1) {
+        ptrdiff_t len = (intptr_t) iio_buffer_end(buf)
+        - (intptr_t) iio_buffer_start(buf);
         memset(iio_buffer_start(buf), 0, len);
       }
 
       for (unsigned int i = 0; i < input_items.size(); i++)
-        channel_write(channel_list[i], input_items[i],
-                noutput_items * sizeof(short));
+            channel_write(channel_list[i], input_items[i],
+            noutput_items * sizeof(short));
 
       ret = iio_buffer_push(buf);
-
-      if (ret < 0)
-      {
+      if (ret < 0) {
         char buf[256];
         iio_strerror(-ret, buf, sizeof(buf));
         std::string error(buf);
