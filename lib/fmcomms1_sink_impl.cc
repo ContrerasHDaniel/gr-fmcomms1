@@ -64,7 +64,7 @@ namespace gr {
     fmcomms1_sink_impl::set_params(unsigned long frequency,
               unsigned long samplerate, unsigned long bandwidth)
     {
-      std::vector<std::string> params_dev, params_phy;
+      std::vector<std::string> params_dev, params_phy, params_vga;
 
       // Parámetros del dispositivo de transmisión
       params_dev.push_back("out_altvoltage_sampling_frequency="+
@@ -74,13 +74,29 @@ namespace gr {
       params_dev.push_back("out_voltage1_calibbias="+
               boost::to_string(bandwidth/1000000));
 
+      params_vga.push_back("out_altvoltage7_ADC_SYNC_CLK_frequency="+
+              boost::to_string(-1*frequency));
+
       // Parámetros del dispositivo DAC
       params_phy.push_back("out_altvoltage0_frequency="+
               boost::to_string(frequency));
 
       fmcomms1_source_impl::set_parameters(this->dev, params_dev);
+      fmcomms1_source_impl::set_parameters(this->vga, params_vga);
       fmcomms1_source_impl::set_parameters(this->phy, params_phy);
 
+    }
+
+    std::vector<std::string> fmcomms1_sink_impl::get_channels_vector(
+                                      bool chn1_en, bool chn2_en)
+    {
+      std::vector<std::string> channels;
+      if(chn1_en)
+        channels.push_back("voltage0")
+      if(chn2_en)
+        channels.push_back("voltage1")
+
+      return channels;
     }
 
     /*
@@ -98,7 +114,8 @@ namespace gr {
       ctx(ctx),
       interpolation(interpolation),
       buffer_size(buffer_size),
-      destroy_ctx(destroy_ctx)
+      destroy_ctx(destroy_ctx),
+      cyclic(cyclic)
     {
       unsigned int nb_channels, i;
 
@@ -110,8 +127,9 @@ namespace gr {
 
       dev = iio_context_find_device(ctx, "cf-ad9122-core-lpc");
       phy = iio_context_find_device(ctx, "adf4351-tx-lpc");
+      vga = iio_context_find_device(ctx, "ad9523-lpc");
 
-      if(!dev || !phy)
+      if(!dev || !phy || !vga)
       {
         if (destroy_ctx)
           iio_context_destroy(ctx);
@@ -130,9 +148,15 @@ namespace gr {
 
       struct iio_channel *chn1 = iio_device_find_channel(dev, "voltage0", true);
       struct iio_channel *chn2 = iio_device_find_channel(dev, "voltage1", true);
+      struct iio_channel *chn3 = iio_device_find_channel(vga, "altvoltage7", true);
 
+      
+      iio_channel_disable(chn0);
+      iio_channel_disable(chn3);
+      
       //Activación de los canales
       iio_channel_enable(chn0);
+      iio_channel_enable(chn3);
 
       //** Activación de los canales del dispositivo de transmisión **//
       // Primero se desactivan todos, si están activados
@@ -208,7 +232,7 @@ namespace gr {
     }
 
     int
-    fmcomms1_sink_impl::work(int noutput_items,
+    fmcomms1_sink_impl::work_from(int noutput_items,
         gr_vector_const_void_star &input_items,
         gr_vector_void_star &output_items)
     {
@@ -235,6 +259,19 @@ namespace gr {
 
       consume_each(buffer_size / (interpolation + 1));
       return 0;
+    }
+
+    int fmcomms1_sink_impl::work(int noutput_items,
+        gr_vector_const_void_star &input_items,
+        gr_vector_void_star &output_items)
+    {
+      int ret = fmcomms1_sink_impl::work_from(noutput_items, input_items,
+          output_items);
+
+      if (ret < 0 || !cyclic)
+        return ret;
+      else
+        return 0;
     }
 
     void

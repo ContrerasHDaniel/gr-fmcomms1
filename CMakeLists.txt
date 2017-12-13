@@ -150,7 +150,7 @@ if(NOT CPPUNIT_FOUND)
 endif()
 
 if (NOT IIO_LIBRARIES AND NOT IIO_INCLUDE_DIRS)
-    message(FATAL_ERROR "IIO required to compile ebz")
+    message(FATAL_ERROR "IIO required to compile fmcomms1")
 endif()
 
 ########################################################################

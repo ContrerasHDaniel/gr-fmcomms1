@@ -36,6 +36,7 @@ namespace gr {
      private:
       void channel_write(const struct iio_channel *chn,
            const void *src, size_t len);
+      bool cyclic;
 
      protected:
       struct iio_context *ctx;
@@ -59,6 +60,10 @@ namespace gr {
       void set_params(unsigned long frequency,
             unsigned long samplerate, unsigned long bandwidth);
 
+      int work_from(int noutput_items,
+         gr_vector_const_void_star &input_items,
+         gr_vector_void_star &output_items);
+      
       // Where all the action really happens
       int work(int noutput_items,
          gr_vector_const_void_star &input_items,
